@@ -4,6 +4,11 @@
 
 <title>Paul's Online Dice Roller</title>
 
+<!-- 
+Several sources were referenced when writing the HTML and JavaScript associated 
+with this project. Please see paulsdice.js for a list of these sources. 
+-->
+
 <!-- To aid in development, paulsdice.js will be a separate file -->
 <script type="text/javascript" src="paulsdice.js"></script>
 
@@ -17,22 +22,29 @@ Testing...
 
 <br>
 
-<!-- Test the basic die rolling function: -->
-<script type="text/javascript">
+<input type="text" name="numberOfDice" size="1" maxlength="3" value = "1">
 
-document.write("You rolled a "+roll(2, 6));
+d
 
-</script>
+<input type="text" name="dieValue" size="1" maxlength="3" value = "20">
 
 <br>
 
-<!-- Test creation, sorting, and reversing of arrays: -->
-<script type="text/javascript">
+<input type="text" name="numToRoll" size="1" maxlength="3" value = "5">
 
-testArrays();
+k
 
-</script>
+<input type="text" name="numToKeep" size="1" maxlength="3" value = "3">
 
+<br>
+
+<input type="checkbox" name="exploding" value="exploding" checked>Explode on 
+
+<input type="text" name="numToKeep" size="1" maxlength="3" value = "10">
+
+<br>
+
+<textarea name="output" cols="10" rows="10">Hello</textarea>
 
 </body>
 
