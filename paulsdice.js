@@ -5,9 +5,11 @@
  * Arrays in JavaScript: http://www.virtualmv.com/wiki/index.php?title=JavaScript:Arrays
  * Checkboxes in HTML: http://www.w3schools.com/html/tryit.asp?filename=tryhtml_checkbox
  * Checkbox default value and return value: http://www.echoecho.com/htmlforms09.htm
+ * Determine if checkbox is checked or not (in JavaScript): http://stackoverflow.com/questions/9887360/check-if-checkbox-is-checked-javascript
  * DND dice roller: http://www.wizards.com/dnd/dice/dice.htm
  * Math.random() function: http://www.javascriptkit.com/javatutors/randomnum.shtml
  * Simple HTML buttons: http://www.w3.org/TR/html401/interact/forms.html#h-17.4.2
+ * Sorting arrays in JavaScript: http://www.javascriptkit.com/javatutors/arraysort.shtml
  * Using "var" vs. not using "var": http://stackoverflow.com/questions/1470488/difference-between-using-var-and-not-using-var-in-javascript
  *
  */
@@ -51,12 +53,6 @@ function testArrays()
     //document.write("b");
 }
 
-function test()
-{
-    value1 = document.form1.numberOfDice.value;
-    document.form1.output.value = value1;
-}
-
 function rollNdX()
 {
     number = parseInt(document.form1.numberOfDice.value);
@@ -83,6 +79,22 @@ function rollNdX()
     
     document.form1.output.value = outputText;
 
+}
+
+function rollXkY()
+{
+    numToRoll = parseInt(document.form1.numToRoll.value);
+    numToKeep = parseInt(document.form1.numToKeep.value);
+    explodeValue = parseInt(document.form1.explodeValue.value);
+    explodeAllowed = document.form1.exploding.checked;// returns true or false
+    
+    outputText = "";
+    
+    clearOutputBox();
+    
+    outputText = "Rolling "+numToRoll.toString()+"k"+numToKeep.toString()+", exploding on "+explodeValue.toString()+".";
+    
+    document.form1.output.value = outputText;
 }
 
 function clearOutputBox()
