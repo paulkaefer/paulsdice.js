@@ -11,6 +11,7 @@
  * Checkbox default value and return value: http://www.echoecho.com/htmlforms09.htm
  * Determine if checkbox is checked or not (in JavaScript): http://stackoverflow.com/questions/9887360/check-if-checkbox-is-checked-javascript
  * DND dice roller: http://www.wizards.com/dnd/dice/dice.htm
+ * Integer sort instead of string sort: http://stackoverflow.com/questions/1063007/sort-not-working-with-integers
  * Math.random() function: http://www.javascriptkit.com/javatutors/randomnum.shtml
  * Read-only text areas: http://www.velocityreviews.com/forums/t156278-textarea-uneditable.html
  * Simple HTML buttons: http://www.w3.org/TR/html401/interact/forms.html#h-17.4.2
@@ -29,6 +30,15 @@ function rollDice(number, dieValue)
     }
     
     return rollTotal;
+}
+
+// By default, JavaScript's Array.sort() method sorts
+// values as strings. This means that 9, 1, 10 will sort to 1, 10, 9.
+//
+// This function will allow for integer sort.
+function compareNumbers(a, b)
+{
+    return a - b;
 }
 
 function rollNdX()
@@ -85,7 +95,7 @@ function rollXkY()
     outputText = "Raw rolls: " + outputText;
     
     // Sort the rolls in descending order:
-    rolls = rolls.sort();
+    rolls = rolls.sort(compareNumbers);
     rolls = rolls.reverse();
     
     // Append sorted rolls to outputText:
@@ -108,13 +118,32 @@ function rollXkY()
         {
             total += rolls[i];
         }
-        outputText = "Rolled " + numToRoll.toString()+"k"+numToKeep.toString()+", with no explodes.\n" + outputText + "\n--------------------\nTotal: " + total;
+        outputText = "Rolled " + numToRoll.toString()+"k"+numToKeep.toString()+", with no explodes.\n--------------------\n" + outputText + "\n--------------------\nTotal: " + total;
     }
     else // exploding dice are allowed
     {
         // print out raw rolls & sorted
         // calculate with explodes
         // print out grand total
+        for (i=0; i < numToKeep; i++)
+        {
+            total += rolls[i];
+            if (rolls[i] == explodeValue)
+            {
+                // Explosion handling:
+                outputText = outputText + "\nExplosion!";
+                newRoll = (Math.floor(Math.random()*explodeValue + 1));
+                outputText += " +"+newRoll.toString();
+                total += newRoll;
+                while (newRoll == explodeValue)
+                {
+                    newRoll = (Math.floor(Math.random()*explodeValue + 1));
+                    total += newRoll;
+                    outputText += " +"+newRoll.toString();
+                }
+            }
+        }
+        outputText = "Rolled " + numToRoll.toString()+"k"+numToKeep.toString()+", with explodes.\n--------------------\n" + outputText + "\n--------------------\nTotal: " + total;        
     }
      
     //outputText = "Rolling "+numToRoll.toString()+"k"+numToKeep.toString()+", exploding on "+explodeValue.toString()+".";
