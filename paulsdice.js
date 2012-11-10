@@ -31,33 +31,6 @@ function rollDice(number, dieValue)
     return rollTotal;
 }
 
-function testArrays()
-{
-    // Debugging:
-    //document.write("a");
-    var dice_array = new Array(4);
-    for (i=0; i<4; i++)
-    {
-        dice_array[i] = (Math.floor(Math.random()*6 + 1));
-        //dice_array[i] = roll(2,6);
-        document.write("<br>dice_array["+i+"]= "+dice_array[i]);
-    }
-    dice_array = dice_array.sort();
-    document.write("<br><br>Sorted:<br><br>");
-    for (i=0; i<4; i++)
-    {
-        document.write("<br>dicearray["+i+"]= "+dice_array[i]);
-    }
-    dice_array = dice_array.reverse();
-    document.write("<br><br>Reversed:<br><br>");
-    for (i=0; i<4; i++)
-    {
-        document.write("<br>dice_array["+i+"]= "+dice_array[i]);
-    }
-    // Debugging:
-    //document.write("b");
-}
-
 function rollNdX()
 {
     number = parseInt(document.form1.numberOfDice.value);
@@ -94,10 +67,57 @@ function rollXkY()
     explodeAllowed = document.form1.exploding.checked;// returns true or false
     
     outputText = "";
-    
     clearOutputBox();
+    total = 0;
     
-    outputText = "Rolling "+numToRoll.toString()+"k"+numToKeep.toString()+", exploding on "+explodeValue.toString()+".";
+    var rolls = new Array(numToRoll);
+    
+    for (i=0; i < numToRoll; i++)
+    {
+        rolls[i] = (Math.floor(Math.random()*explodeValue + 1));
+        outputText = outputText + rolls[i].toString();
+        if (i < (numToRoll - 1))
+        {
+            outputText += ",";
+        }
+    }
+    
+    outputText = "Raw rolls: " + outputText;
+    
+    // Sort the rolls in descending order:
+    rolls = rolls.sort();
+    rolls = rolls.reverse();
+    
+    // Append sorted rolls to outputText:
+    outputText = outputText + "\nSorted Rolls: ";
+    for (i=0; i < numToRoll; i++)
+    {
+        outputText = outputText + rolls[i].toString();
+        if (i < (numToRoll - 1))
+        {
+            outputText += ",";
+        }
+    }
+    
+    if (explodeAllowed == false)
+    {
+        // No explodes allowed
+
+        // calculate sum:
+        for (i=0; i < numToKeep; i++)
+        {
+            total += rolls[i];
+        }
+        outputText = "Rolled " + numToRoll.toString()+"k"+numToKeep.toString()+", with no explodes.\n" + outputText + "\n--------------------\nTotal: " + total;
+    }
+    else // exploding dice are allowed
+    {
+        // print out raw rolls & sorted
+        // calculate with explodes
+        // print out grand total
+    }
+     
+    //outputText = "Rolling "+numToRoll.toString()+"k"+numToKeep.toString()+", exploding on "+explodeValue.toString()+".";
     
     document.form1.output.value = outputText;
 }
