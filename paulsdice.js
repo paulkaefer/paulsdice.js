@@ -1,5 +1,9 @@
 
 /*
+ * paulsdice.js
+ *
+ * Created by Paul Kaefer, November 2012
+ *
  * Sources:
  *
  * Arrays in JavaScript: http://www.virtualmv.com/wiki/index.php?title=JavaScript:Arrays
@@ -8,6 +12,7 @@
  * Determine if checkbox is checked or not (in JavaScript): http://stackoverflow.com/questions/9887360/check-if-checkbox-is-checked-javascript
  * DND dice roller: http://www.wizards.com/dnd/dice/dice.htm
  * Math.random() function: http://www.javascriptkit.com/javatutors/randomnum.shtml
+ * Read-only text areas: http://www.velocityreviews.com/forums/t156278-textarea-uneditable.html
  * Simple HTML buttons: http://www.w3.org/TR/html401/interact/forms.html#h-17.4.2
  * Sorting arrays in JavaScript: http://www.javascriptkit.com/javatutors/arraysort.shtml
  * Using "var" vs. not using "var": http://stackoverflow.com/questions/1470488/difference-between-using-var-and-not-using-var-in-javascript
