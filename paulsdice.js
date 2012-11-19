@@ -4,7 +4,7 @@
  *
  * Created by Paul Kaefer, November 2012
  *
- * Sources:
+ * Sources consulted:
  *
  * Arrays in JavaScript: http://www.virtualmv.com/wiki/index.php?title=JavaScript:Arrays
  * Checkboxes in HTML: http://www.w3schools.com/html/tryit.asp?filename=tryhtml_checkbox
