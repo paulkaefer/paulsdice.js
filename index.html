@@ -19,6 +19,7 @@ with this project. Please see paulsdice.js for a list of these sources.
 
 <form method="post" action="" name="form1">
 
+<!-- INPUTS! -->
 <input type="text" name="numberOfDice" size="1" maxlength="3" value = "1">
 d
 <input type="text" name="dieValue" size="1" maxlength="3" value = "20">
@@ -36,10 +37,16 @@ k
 
 <br>
 
-<INPUT type="button" value="Roll ndx" onClick="rollNdX();"><INPUT type="button" value="Roll xky" onClick="rollXkY();"><INPUT type="button" value="Clear" onClick="clearOutputBox();">
+<!-- BUTTONS! -->
+<INPUT type="button" value="Roll ndx" onClick="rollNdX();">
+<INPUT type="button" value="Roll xky" onClick="rollXkY();">
+<br>
+<INPUT type="button" value="flip coin" onClick="flipCoin();">
+<INPUT type="button" value="Clear" onClick="clearOutputBox();">
 
 <br>
 
+<!-- OUTPUT TEXT AREA! -->
 <textarea readonly name="output" cols="25" rows="15"></textarea>
 
 </form>

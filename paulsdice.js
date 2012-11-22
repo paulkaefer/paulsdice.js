@@ -151,6 +151,35 @@ function rollXkY()
     document.form1.output.value = outputText;
 }
 
+function flipCoin()
+{
+    //clearOutputBox();
+    coin = (Math.floor(Math.random()*2));
+    
+    if (coin==0)
+    {
+        outputText = "You flipped heads.";
+    }
+    else if (coin==1)
+    {
+        outputText = "You flipped tails.";
+    }
+    else
+    {
+        // If something went wrong...
+        outputText = "Something other than heads/tails was flipped.";
+    }
+
+    // Length of text in output box: ((document.form1.output.value).length)
+    // add .toString() to print it out
+    if ( ((document.form1.output.value).length) > 100)
+    {
+        document.form1.output.value = "";
+    }
+    outputText = document.form1.output.value + "\n" + outputText;
+    document.form1.output.value = outputText;
+}
+
 function clearOutputBox()
 {
     document.form1.output.value = "";
