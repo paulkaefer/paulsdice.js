@@ -46,11 +46,33 @@ function rollNdX()
     number = parseInt(document.form1.numberOfDice.value);
     dieValue = parseInt(document.form1.dieValue.value);
     
-    currentRoll = 0;
-    total = 0;
     outputText = "";
     
+    //clearOutputBox();
+    
+    if (number == 1)
+    {
+        roll = Math.floor(Math.random()*dieValue + 1);
+        outputText = "You rolled a " + roll.toString() + "."
+        
+        // Append "You rolled a __." to the current outputText, unless it has length > 100:
+        if (( ((document.form1.output.value).length) > 100) || ( ((document.form1.output.value).length) == 0))
+        {
+            document.form1.output.value = outputText;
+        }
+        else
+        {
+            outputText = document.form1.output.value + "\n" + outputText;
+            document.form1.output.value = outputText;
+        }
+        
+        return;
+    }
+    
     clearOutputBox();
+    
+    currentRoll = 0;
+    total = 0;
     
     for (i=0; i < number; i++)
     {
@@ -172,12 +194,15 @@ function flipCoin()
 
     // Length of text in output box: ((document.form1.output.value).length)
     // add .toString() to print it out
-    if ( ((document.form1.output.value).length) > 100)
+    if (( ((document.form1.output.value).length) > 100) || ( ((document.form1.output.value).length) == 0))
     {
-        document.form1.output.value = "";
+        document.form1.output.value = outputText;
     }
-    outputText = document.form1.output.value + "\n" + outputText;
-    document.form1.output.value = outputText;
+    else
+    {
+        outputText = document.form1.output.value + "\n" + outputText;
+        document.form1.output.value = outputText;
+    }
 }
 
 function clearOutputBox()
