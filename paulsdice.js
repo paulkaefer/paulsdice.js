@@ -20,6 +20,8 @@
  *
  */
 
+var TEXT_AREA_MAX_CHARS = 210;
+ 
 function rollDice(number, dieValue)
 {
     var rollTotal = 0;
@@ -56,7 +58,7 @@ function rollNdX()
         outputText = "You rolled a " + roll.toString() + "."
         
         // Append "You rolled a __." to the current outputText, unless it has length > 100:
-        if (( ((document.form1.output.value).length) > 100) || ( ((document.form1.output.value).length) == 0))
+        if (( ((document.form1.output.value).length) > TEXT_AREA_MAX_CHARS) || ( ((document.form1.output.value).length) == 0))
         {
             document.form1.output.value = outputText;
         }
@@ -194,7 +196,7 @@ function flipCoin()
 
     // Length of text in output box: ((document.form1.output.value).length)
     // add .toString() to print it out
-    if (( ((document.form1.output.value).length) > 100) || ( ((document.form1.output.value).length) == 0))
+    if (( ((document.form1.output.value).length) > TEXT_AREA_MAX_CHARS) || ( ((document.form1.output.value).length) == 0))
     {
         document.form1.output.value = outputText;
     }
