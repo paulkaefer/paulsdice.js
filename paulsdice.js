@@ -21,6 +21,11 @@
  */
 
 var TEXT_AREA_MAX_CHARS = 210;
+
+function clearOutputBox()
+{
+    document.form1.output.value = "";
+}
  
 function rollDice(number, dieValue)
 {
@@ -207,7 +212,29 @@ function flipCoin()
     }
 }
 
-function clearOutputBox()
+/* Sources consulted for the Dreidel function:
+    - http://en.wikipedia.org/wiki/Dreidel
+    - http://en.wikipedia.org/wiki/Hebrew_alphabet
+    - http://en.wikipedia.org/wiki/Unicode_and_HTML_for_the_Hebrew_alphabet
+*/
+function rollDreidel()
 {
-    document.form1.output.value = "";
+    //clearOutputBox();
+    var roll = (Math.floor(Math.random()*4));
+    
+    var dreidel = ["\u05E0 - Nun - do nothing", "\u05D2 - Gimel - take everything", "\u05D4 - Hei - take half", "\u05E4/\u05E9 - Shin/Pei - put one in"]
+    
+    var outputText = dreidel[roll];
+
+    // Length of text in output box: ((document.form1.output.value).length)
+    // add .toString() to print it out
+    if (( ((document.form1.output.value).length) > TEXT_AREA_MAX_CHARS) || ( ((document.form1.output.value).length) == 0))
+    {
+        document.form1.output.value = outputText;
+    }
+    else
+    {
+        outputText = document.form1.output.value + "\n" + outputText;
+        document.form1.output.value = outputText;
+    }
 }
