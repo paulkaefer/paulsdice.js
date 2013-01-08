@@ -238,3 +238,26 @@ function rollDreidel()
         document.form1.output.value = outputText;
     }
 }
+
+function drawCard()
+{
+    var cards = ["ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"];
+    var suits = ["hearts", "spades", "diamonds", "clubs"];
+    
+    var card = (Math.floor(Math.random()*13));
+    var suit = (Math.floor(Math.random()*4));
+    
+    var outputText = cards[card] + " of " + suits[suit];
+    
+    // Length of text in output box: ((document.form1.output.value).length)
+    // add .toString() to print it out
+    if (( ((document.form1.output.value).length) > TEXT_AREA_MAX_CHARS) || ( ((document.form1.output.value).length) == 0))
+    {
+        document.form1.output.value = outputText;
+    }
+    else
+    {
+        outputText = document.form1.output.value + "\n" + outputText;
+        document.form1.output.value = outputText;
+    }
+}
