@@ -222,7 +222,7 @@ function rollDreidel()
     //clearOutputBox();
     var roll = (Math.floor(Math.random()*4));
     
-    var dreidel = ["\u05E0 - Nun - do nothing", "\u05D2 - Gimel - take everything", "\u05D4 - Hei - take half", "\u05E4/\u05E9 - Shin/Pei - put one in"]
+    var dreidel = ["\u05E0 - Nun - do nothing", "\u05D2 - Gimel - take everything", "\u05D4 - Hei - take half (rounded up)", "\u05E4/\u05E9 - Shin/Pei - put one in"]
     
     var outputText = dreidel[roll];
 
