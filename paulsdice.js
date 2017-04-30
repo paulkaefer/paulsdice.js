@@ -81,10 +81,22 @@ function rollNdX()
     currentRoll = 0;
     total = 0;
     
+    maximumRoll = 0;
+    minimumRoll = dieValue + 1;
+    
     for (i=0; i < number; i++)
     {
         currentRoll = Math.floor(Math.random()*dieValue + 1);
         outputText = outputText + currentRoll.toString();
+        
+        if (currentRoll > maximumRoll) {
+            maximumRoll = currentRoll;
+        }
+        
+        if (currentRoll < minimumRoll) {
+            minimumRoll = currentRoll;
+        }
+        
         if (i < (number - 1))
         {
             outputText += ",";
@@ -92,7 +104,11 @@ function rollNdX()
         total = total + currentRoll;
     }
     
-    outputText = "Rolled "+number.toString()+"d"+dieValue.toString()+"\nRolls: "+outputText+"\n--------------------\nTotal: "+total.toString();
+    outputText = "Rolled " + number.toString() + "d" + dieValue.toString()
+               + "\nRolls: " + outputText
+               + "\n--------------------\nMaximum roll: " + maximumRoll.toString()
+               + "\nMinimum roll: " + minimumRoll.toString()
+               + "\nTotal: " + total.toString();
     
     document.form1.output.value = outputText;
 
